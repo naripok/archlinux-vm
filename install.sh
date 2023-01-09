@@ -29,7 +29,7 @@ mount /dev/vda1 /mnt
 sed -i 's/#ParallelDownloads = 5/ParallelDownloads = 50/' /etc/pacman.conf
 
 # Install essential packages
-pacstrap /mnt base base-devel linux linux-firmware neovim fd ripgrep
+pacstrap /mnt base base-devel linux neovim fd ripgrep
 
 # Generate an fstab
 genfstab -U /mnt >> /mnt/etc/fstab
