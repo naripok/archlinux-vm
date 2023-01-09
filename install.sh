@@ -62,7 +62,7 @@ y
 EOF
 
 # Configure the bootloader
-grub-install --target=i386-pc /dev/vda
+grub-install /dev/vda
 grub-mkconfig -o /boot/grub/grub.cfg
 
 # Exit the chroot environment
