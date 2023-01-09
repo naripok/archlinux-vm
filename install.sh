@@ -29,7 +29,9 @@ mount /dev/vda1 /mnt
 sed -i 's/#ParallelDownloads = 5/ParallelDownloads = 50/' /etc/pacman.conf
 
 # Install essential packages
-pacstrap /mnt base base-devel linux neovim fd ripgrep
+pacstrap /mnt\
+  base base-devel linux grub\
+  neovim fd ripgrep plasma-meta chromium firefox alacritty zsh git
 
 # Generate an fstab
 genfstab -U /mnt >> /mnt/etc/fstab
@@ -38,7 +40,7 @@ genfstab -U /mnt >> /mnt/etc/fstab
 arch-chroot /mnt
 
 # Set the time zone
-ln -sf /usr/share/zoneinfo/America/New_York /etc/localtime
+ln -sf /usr/share/zoneinfo/America/Sao_Paulo /etc/localtime
 
 # Generate /etc/adjtime
 hwclock --systohc
@@ -56,14 +58,12 @@ echo 'LANG=en_US.UTF-8' > /etc/locale.conf
 echo 'ag-tau' > /etc/hostname
 
 # Install the bootloader
-pacman -S grub <<EOF
-y
-
-EOF
-
 # Configure the bootloader
 grub-install /dev/vda --force
 grub-mkconfig -o /boot/grub/grub.cfg
 
 # Exit the chroot environment
 exit
+
+# Finish it.
+reboot
