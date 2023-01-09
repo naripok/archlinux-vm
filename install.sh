@@ -62,7 +62,7 @@ y
 EOF
 
 # Configure the bootloader
-grub-install /dev/vda
+grub-install /dev/vda --force
 grub-mkconfig -o /boot/grub/grub.cfg
 
 # Exit the chroot environment
