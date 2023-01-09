@@ -26,7 +26,7 @@ mkfs.ext4 /dev/vda1
 mount /dev/vda1 /mnt
 
 # Install essential packages
-pacstrap /mnt base base-devel
+pacstrap /mnt base base-devel linux linux-firmware neovim fd ripgrep
 
 # Generate an fstab
 genfstab -U /mnt >> /mnt/etc/fstab
@@ -53,15 +53,14 @@ echo 'LANG=en_US.UTF-8' > /etc/locale.conf
 echo 'ag-tau' > /etc/hostname
 
 # Install the bootloader
-pacman -S grub
-grub-install /dev/vda
-grub-mkconfig -o /boot/grub/grub.cfg
+pacman -S grub <<EOF
+y
 
-# Set the root password
-passwd
+EOF
+
+# Configure the bootloader
+grub-install --target=i386-pc /dev/vda
+grub-mkconfig -o /boot/grub/grub.cfg
 
 # Exit the chroot environment
 exit
-
-# Reboot
-reboot
