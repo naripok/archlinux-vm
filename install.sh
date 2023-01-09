@@ -26,7 +26,7 @@ mkfs.ext4 /dev/vda1
 mount /dev/vda1 /mnt
 
 # fixup pacman parallel downloads
-sed -i 's/#ParallelDownloads = 5/ParallelDownloads = 50/' /etc/pacman.conf
+sed -i 's/#ParallelDownloads = 5/ParallelDownloads = 20/' /etc/pacman.conf
 
 # Install essential packages
 pacstrap /mnt\
