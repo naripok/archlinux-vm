@@ -25,6 +25,9 @@ mkfs.ext4 /dev/vda1
 # Mount the file systems
 mount /dev/vda1 /mnt
 
+# fixup pacman parallel downloads
+sed -i 's/#ParallelDownloads = 5/ParallelDownloads = 50/' /etc/pacman.conf
+
 # Install essential packages
 pacstrap /mnt base base-devel linux linux-firmware neovim fd ripgrep
 
