@@ -19,6 +19,5 @@ sudo qemu-system-x86_64 \
   -net nic,model=virtio \
   -net user \
   -vga qxl \
-  -fsdev local,id=host,path=$SHARED_DIR,security_model=mapped \
-  -device virtio-9p-pci,fsdev=host,mount_tag=host \
+  -nodefaults \
   -monitor unix:/tmp/qemu-monitor-$VM_NAME,server,nowait
