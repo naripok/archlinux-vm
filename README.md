@@ -4,15 +4,26 @@
 
 You gonna need a host archlinux machine with the `qemu-full` package installed.
 
-- Run the VM
+### Create the VM
 
 ```bash
-./qemu-run.sh
+./create.sh
 ```
 
-- Mount the shared directory in the guest machine
+### Perform the automated system install
+
+In the guest machine, go:
 
 ```bash
-mkdir /tmp/host
-mount -t 9p -o trans=virtio host /tmp/host -oversion=9p2000.L
+mkdir host
+mount -t 9p host host
+bash host/archinstall.sh
+```
+
+### Done!
+
+Shutdown the machine and run the version without the attached installation medium
+
+```bash
+./run.sh
 ```

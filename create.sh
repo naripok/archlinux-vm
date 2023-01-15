@@ -2,8 +2,6 @@
 
 source ./config.sh
 
-sudo rm $DISK_IMAGE
-
 # Create the disk image
 sudo qemu-img create -f qcow2 $DISK_IMAGE $DISK_SIZE
 

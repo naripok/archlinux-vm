@@ -1,0 +1,6 @@
+{
+  "!superusers": {
+    "naripok": { "!password": "password" }
+  },
+  "!users": {}
+}
