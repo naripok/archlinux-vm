@@ -17,7 +17,7 @@ In the guest machine, go:
 ```bash
 mkdir host
 mount -t 9p host host
-bash host/install.sh
+./host/install.sh
 ```
 
 ### Post-install
