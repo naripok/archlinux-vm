@@ -1,7 +1,6 @@
 {
   "additional-repositories": ["multilib"],
   "archinstall-language": "English",
-  "audio": "pipewire",
   "bootloader": "grub-install",
   "harddrives": ["/dev/vda"],
   "hostname": "arch",
@@ -23,7 +22,11 @@
     "alacritty",
     "dolphin",
     "plasma-meta",
-    "networkmanager"
+    "networkmanager",
+    "tmux",
+    "fp",
+    "ripgrep",
+    "fzf"
   ],
   "services": ["docker", "sddm", "NetworkManager"],
   "profile": "minimal",
