@@ -1,4 +1,4 @@
-!/usr/bin/bash
+#!/usr/bin/bash
 
 # Setup an arch linux installation from scratch
 
@@ -10,7 +10,7 @@ timedatectl set-ntp true
 
 # Partition the disks
 # TODO: Make this more flexible
-fdisk /dev/sda <<EOF
+fdisk /dev/vda <<EOF
 g
 n
 1
@@ -20,17 +20,17 @@ w
 EOF
 
 # Format the partitions
-mkfs.ext4 /dev/sda1
+mkfs.ext4 /dev/vda1
 
 # Mount the file systems
-mount /dev/sda1 /mnt
+mount /dev/vda1 /mnt
 
 # fixup pacman parallel downloads
 sed -i 's/#ParallelDownloads = 5/ParallelDownloads = 20/' /etc/pacman.conf
 
 # Install essential packages
 pacstrap /mnt\
-  base base-devel linux systemd-boot\
+  base base-devel linux grub\
   neovim fd ripgrep plasma-meta chromium firefox alacritty zsh git
 
 # Generate an fstab
@@ -57,19 +57,11 @@ echo 'LANG=en_US.UTF-8' > /etc/locale.conf
 # Set the hostname
 echo 'ag-tau' > /etc/hostname
 
-# Install the bootloader using systemd-boot
-bootctl --path=/mnt install
+# Install the bootloader and configure it
+grub-install --target=i386-pc /dev/vda
 
-# Generate the systemd-boot config file
-echo "default arch" > /mnt/boot/loader/loader.conf
-echo "timeout 3" >> /mnt/boot/loader/loader.conf
-echo "editor 0" >> /mnt/boot/loader/loader.conf
-
-# Generate the systemd-boot entry for the installed system
-echo "title Arch Linux" > /mnt/boot/loader/entries/arch.conf
-echo "linux /vmlinuz-linux" >> /mnt/boot/loader/entries/arch.conf
-echo "initrd /initramfs-linux.img" >> /mnt/boot/loader/entries/arch.conf
-echo "options root=PARTUUID=$(blkid -s PARTUUID -o value /dev/sda1) rw" >> /mnt/boot/loader/entries/arch.conf
+# Generate the grub configuration file
+grub-mkconfig -o /boot/grub/grub.cfg
 
 # Enable the NetworkManager service
 systemctl enable NetworkManager
