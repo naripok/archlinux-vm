@@ -1,3 +1,5 @@
+#!/usr/bin/bash
+
 export OS_NAME="archlinux"
 export VM_NAME="arch"
 export ISO_IMAGE="/home/tau/Storage/images/archlinux-x86_64.iso"

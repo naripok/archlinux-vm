@@ -17,12 +17,15 @@ In the guest machine, go:
 ```bash
 mkdir host
 mount -t 9p host host
-bash host/archinstall.sh
+bash host/install.sh
 ```
 
-### Done!
+### Post-install
 
-Shutdown the machine and run the version without the attached installation medium
+Now you should be have a minimal KDE arch installation fully configured and ready to run.
+Cheers!
+
+To do some work on it, run:
 
 ```bash
 ./run.sh

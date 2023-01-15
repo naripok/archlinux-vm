@@ -7,7 +7,7 @@
   "hostname": "arch",
   "kernels": ["linux"],
   "keyboard-layout": "us",
-  "mirror-region": "Worldwide",
+  "mirror-region": "United States",
   "nic": {
     "NetwordManager": true,
     "nic": "Use NetworkManager (necessary to configure internet graphically in GNOME and KDE)"
@@ -22,9 +22,10 @@
     "chromium",
     "alacritty",
     "dolphin",
-    "plasma-meta"
+    "plasma-meta",
+    "networkmanager"
   ],
-  "services": ["docker"],
+  "services": ["docker", "sddm", "NetworkManager"],
   "profile": "minimal",
   "swap": false,
   "sys-encoding": "UTF-8",
