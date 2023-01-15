@@ -13,5 +13,8 @@ sudo qemu-system-x86_64 \
   -vga qxl \
   -fsdev local,id=host,path=$SHARED_DIR,security_model=mapped \
   -device virtio-9p-pci,fsdev=host,mount_tag=host \
+  -nodefaults \
+  -fsdev local,id=host,path=$SHARED_DIR,security_model=mapped \
+  -device virtio-9p-pci,fsdev=host,mount_tag=host \
   -loadvm $SNAPSHOT_NAME \
   -monitor unix:/tmp/qemu-monitor-$VM_NAME,server,nowait
