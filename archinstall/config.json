@@ -24,7 +24,7 @@
     "plasma-meta",
     "networkmanager",
     "tmux",
-    "fp",
+    "fd",
     "ripgrep",
     "fzf"
   ],
