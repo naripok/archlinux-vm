@@ -42,3 +42,13 @@ mkdir host
 sudo mount -t 9p host host
 ./host/guest/post-install.sh
 ```
+
+### Working
+
+After having executed the post-install step, you can shutdown the VM and restart it using the following command:
+
+```bash
+./run.sh
+```
+
+This will run the virtual machine without the host's shared directory, and it should be ready for getting some work done!
