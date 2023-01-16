@@ -7,9 +7,12 @@ echo "$USER ALL=(ALL) NOPASSWD: ALL" | sudo tee -a /etc/sudoers
 git clone https://aur.archlinux.org/yay.git
 cd yay
 makepkg -si --noconfirm
+cd -
+rm -rf yay
 
 # Install our stuff
 git clone https://github.com/naripok/.dotfiles.git
 cd .dotfiles
 git checkout arch
-./tools/link.sh
+bash tools/link.sh
+cd -
