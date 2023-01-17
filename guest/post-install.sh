@@ -10,9 +10,12 @@ makepkg -si --noconfirm
 cd -
 rm -rf yay
 
-# Install our stuff
+# Install our dotfiles
 git clone https://github.com/naripok/.dotfiles.git
 cd .dotfiles
 git checkout arch
 bash tools/link.sh
 cd -
+
+# Install our packages
+yay -S --noconfirm --needed - < ~/host/guest/packages.txt
