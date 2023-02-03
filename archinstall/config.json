@@ -29,7 +29,10 @@
     "alacritty",
     "dolphin",
     "networkmanager",
-    "spectacle"
+    "spectacle",
+    "httpie",
+    "jq",
+    "tidy"
   ],
   "services": ["docker", "sddm", "NetworkManager"],
   "profile": "minimal",
