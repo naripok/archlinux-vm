@@ -13,7 +13,6 @@ rm -rf yay
 # Install our dotfiles
 git clone https://github.com/naripok/.dotfiles.git
 cd .dotfiles
-git checkout arch
 bash tools/link.sh
 cd -
 
